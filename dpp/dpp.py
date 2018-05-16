@@ -4,6 +4,7 @@
 import os, sys
 import argparse
 
+__all__ = ["main"]
 
 def main():
     parser = argparse.ArgumentParser()
@@ -35,7 +36,7 @@ def preproc(filename, from_file = "", from_line = 0):
                 include = os.path.join(apath, l[3:].strip())
                 afile = os.path.abspath(include)
                 if afile in included_files:
-                    raise UnboundLocalError("""Loop detected in inclusion of %s 
+                    raise UnboundLocalError("""Loop detected in inclusion of %s
                     in %s:%d""" % (filename, from_file, from_line))
 
                 if not os.path.isfile(afile):
